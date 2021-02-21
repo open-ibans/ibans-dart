@@ -1,4 +1,5 @@
-import 'package:ibans_dart/ibans_dart.dart';
+
+import 'package:ibans/ibans.dart';
 
 void main() {
   var iban = parse('AO12345678909876');

@@ -1,5 +1,6 @@
 
-import 'package:ibans_dart/ibans_dart.dart';
+import 'package:ibans/ibans.dart';
+import 'package:ibans/src/models.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -9,7 +10,8 @@ void main() {
     });
 
     test('First Test', () {
-      expect(parse('AO06005500009209313310152').country.code, 'AO');
+      var iban = parse('AO06005500009209313310152');
+      expect(iban.country.code, 'AO');
     });
   });
 }

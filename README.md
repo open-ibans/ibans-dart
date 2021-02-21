@@ -1,22 +1,62 @@
-A library for Dart developers.
+# ibans
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+A simple yet powerful package for validating parsing ibans
 
-## Usage
+# Features
 
-A simple usage example:
+- Validating IBAN
+    - Checks if the country supports iban
+    - Validate the IBAN string size for the specific country
+    - Validate the check code for countries with fix check code
+    - Validate the structure of BBAN for the specific country
+    - Validate the entire IBAN using MOD 97 operations described by [ISO-7064](https://en.wikipedia.org/wiki/ISO_7064)
 
+- Parsing IBAN will get the following info
+    - Country name
+    - Country Alpha2 code
+    - Check Code
+    - Basic Bank Account Number
+    - (If Available) Bank Code
+    - (If Available) Account number
+    - (If Available) SWIFT
+    - (If Available) bank initials
+    - (If Available) Bank Name
+    - (If Available) Branch code
+    - (If Available) Account Type
+    - (If Available) Account Holder
+    - (If Available) Balance Account Number
+    - (If Available) Currency Code
+
+
+# Usage
+
+Using the package is as simple as shown below
+
+## Parse IBAN
+
+to parse an iban just call
 ```dart
-import 'package:ibans_dart/ibans_dart.dart';
 
-main() {
-  var awesome = new Awesome();
-}
+    import 'package:ibans/ibans.dart';
+    import 'package:ibans/src/models.dart';
+
+    main() {
+      Iban iban = parse('AO06005500009209313310152');
+      print(iban.country.code);
+      print(iban.country.name);
+      print(iban.bank.name);
+    }
 ```
 
-## Features and bugs
+============
+Contributing
+============
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+Contributions are welcome, please open an issue or send a PR.
+Please read our Contributing and code of conduct
 
-[tracker]: http://example.com/issues/replaceme
+=======
+License
+=======
+
+This project is available under MIT License
