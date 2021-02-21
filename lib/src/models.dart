@@ -22,15 +22,15 @@ class Country {
 /// Represents an account
 class Account {
   /// Account number
-  String number;
+  String? number;
   /// The account type
-  String type;
+  String? type;
   /// The account holder identification
-  String holder;
+  String? holder;
   /// The currency code
-  String currency_code;
+  String? currency_code;
   /// The balance account number
-  String balance_account;
+  String? balance_account;
 
   Account(this.number, this.type,
       this.holder, this.currency_code,

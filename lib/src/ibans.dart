@@ -18,14 +18,8 @@ import 'models.dart';
 /// print(iban.country.name) // 'Angola';
 /// ```
 Iban parse(String ibanString) {
-  if(ibanString == null){
-    throw ValueException('Iban not provided');
-  }
   var countryCode = ibanString.substring(0, 2);
   var spec = _getIbanSpec(countryCode);
-  if(spec == null) {
-    throw ValueException("This country doesn't support iban");
-  }
 
   validate(ibanString, spec);
 
@@ -41,7 +35,7 @@ Iban parse(String ibanString) {
     spec.countryName
   );
   var iban = Iban(
-    null,
+    [],
     _getBank(countryCode),
     country,
     account,
@@ -82,9 +76,6 @@ void validate(String iban_str, IbanSpec spec) {
 
 /// Returns a substring of the iban provided the specification
 String _getField(IbanSpecData field, String iban_str) {
-  if(field == null) {
-    return null;
-  }
   var data = iban_str.substring(field.position, field.length);
   return data;
 }
@@ -105,7 +96,7 @@ int _calculate_mod97(String iban_string){
   /// send the first 4 letters to the back
   iban_string = iban_string.substring(4) + iban_string.substring(0, 4);
   iban_string = iban_string.replaceAllMapped(RegExp(r'([A-Z]{1})'),
-          (Match m) => '${m[0].codeUnits[0] - 55}');
+          (Match m) => '${m[0]!.codeUnits[0] - 55}');
 
   var iban_int = BigInt.parse(iban_string);
   var remainder = iban_int.remainder(BigInt.from(97)).toInt();
@@ -115,20 +106,22 @@ int _calculate_mod97(String iban_string){
 /// Return an Iban specification for that country
 ///
 /// Returns null if country doesn't support iban
-IbanSpec _getIbanSpec(String country_code){
+/// Throws [ValueException] if an invalid [countryCode] is provided
+IbanSpec _getIbanSpec(String countryCode){
   var file = File('lib/data/ibans.dat');
   var specs = IbansSpecs.fromBuffer(file.readAsBytesSync());
   for(var spec in specs.list.toSet()) {
-    if(spec.countryCode == country_code) {
+    if(spec.countryCode == countryCode) {
       return spec;
     }
   }
-  return null;
+  throw ValueException("This country doesn't support iban");
 }
 
 /// Return The bank associated to the iban
 ///
 /// Returns null if bank not found or info not available
+/// Throws [ValueException] if there is no information is available for the [countryCode]
 Bank _getBank(String country_code){
   var file = File('lib/data/banks.dat');
   var banks = Banks.fromBuffer(file.readAsBytesSync());
@@ -137,5 +130,5 @@ Bank _getBank(String country_code){
       return bank;
     }
   }
-  return null;
+  throw ValueException("Bank was not found");
 }

@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: lib/specs.proto
 //
-// @dart = 2.7
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
@@ -20,10 +20,10 @@ class Bank extends $pb.GeneratedMessage {
 
   Bank._() : super();
   factory Bank({
-    $core.String code,
-    $core.String name,
-    $core.String initials,
-    $core.String swift,
+    $core.String? code,
+    $core.String? name,
+    $core.String? initials,
+    $core.String? swift,
   }) {
     final _result = create();
     if (code != null) {
@@ -59,7 +59,7 @@ class Bank extends $pb.GeneratedMessage {
   static $pb.PbList<Bank> createRepeated() => $pb.PbList<Bank>();
   @$core.pragma('dart2js:noInline')
   static Bank getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Bank>(create);
-  static Bank _defaultInstance;
+  static Bank? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get code => $_getSZ(0);
@@ -107,8 +107,8 @@ class IbanSpecConstant extends $pb.GeneratedMessage {
 
   IbanSpecConstant._() : super();
   factory IbanSpecConstant({
-    $core.int position,
-    $core.String constant,
+    $core.int? position,
+    $core.String? constant,
   }) {
     final _result = create();
     if (position != null) {
@@ -138,7 +138,7 @@ class IbanSpecConstant extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpecConstant> createRepeated() => $pb.PbList<IbanSpecConstant>();
   @$core.pragma('dart2js:noInline')
   static IbanSpecConstant getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpecConstant>(create);
-  static IbanSpecConstant _defaultInstance;
+  static IbanSpecConstant? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get position => $_getIZ(0);
@@ -169,9 +169,9 @@ class IbanSpecConstantPattern extends $pb.GeneratedMessage {
 
   IbanSpecConstantPattern._() : super();
   factory IbanSpecConstantPattern({
-    $core.int position,
-    $core.String pattern,
-    $core.String constant,
+    $core.int? position,
+    $core.String? pattern,
+    $core.String? constant,
   }) {
     final _result = create();
     if (position != null) {
@@ -204,7 +204,7 @@ class IbanSpecConstantPattern extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpecConstantPattern> createRepeated() => $pb.PbList<IbanSpecConstantPattern>();
   @$core.pragma('dart2js:noInline')
   static IbanSpecConstantPattern getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpecConstantPattern>(create);
-  static IbanSpecConstantPattern _defaultInstance;
+  static IbanSpecConstantPattern? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get position => $_getIZ(0);
@@ -244,9 +244,9 @@ class IbanSpecPatterns extends $pb.GeneratedMessage {
 
   IbanSpecPatterns._() : super();
   factory IbanSpecPatterns({
-    $core.String checkDigit,
-    $core.String bban,
-    $core.Iterable<IbanSpecConstantPattern> constants,
+    $core.String? checkDigit,
+    $core.String? bban,
+    $core.Iterable<IbanSpecConstantPattern>? constants,
   }) {
     final _result = create();
     if (checkDigit != null) {
@@ -279,7 +279,7 @@ class IbanSpecPatterns extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpecPatterns> createRepeated() => $pb.PbList<IbanSpecPatterns>();
   @$core.pragma('dart2js:noInline')
   static IbanSpecPatterns getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpecPatterns>(create);
-  static IbanSpecPatterns _defaultInstance;
+  static IbanSpecPatterns? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get checkDigit => $_getSZ(0);
@@ -312,8 +312,8 @@ class IbanSpecData extends $pb.GeneratedMessage {
 
   IbanSpecData._() : super();
   factory IbanSpecData({
-    $core.int position,
-    $core.int length,
+    $core.int? position,
+    $core.int? length,
   }) {
     final _result = create();
     if (position != null) {
@@ -343,7 +343,7 @@ class IbanSpecData extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpecData> createRepeated() => $pb.PbList<IbanSpecData>();
   @$core.pragma('dart2js:noInline')
   static IbanSpecData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpecData>(create);
-  static IbanSpecData _defaultInstance;
+  static IbanSpecData? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get position => $_getIZ(0);
@@ -380,15 +380,15 @@ class IbanSpecFields extends $pb.GeneratedMessage {
 
   IbanSpecFields._() : super();
   factory IbanSpecFields({
-    IbanSpecData bankCode,
-    IbanSpecData accountNumber,
-    IbanSpecData branchCode,
-    IbanSpecData accountType,
-    IbanSpecData accountHolder,
-    IbanSpecData balanceAccountNumber,
-    IbanSpecData currencyCode,
-    $core.Iterable<IbanSpecData> countryCheckCodes,
-    $core.Iterable<IbanSpecConstant> constants,
+    IbanSpecData? bankCode,
+    IbanSpecData? accountNumber,
+    IbanSpecData? branchCode,
+    IbanSpecData? accountType,
+    IbanSpecData? accountHolder,
+    IbanSpecData? balanceAccountNumber,
+    IbanSpecData? currencyCode,
+    $core.Iterable<IbanSpecData>? countryCheckCodes,
+    $core.Iterable<IbanSpecConstant>? constants,
   }) {
     final _result = create();
     if (bankCode != null) {
@@ -439,7 +439,7 @@ class IbanSpecFields extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpecFields> createRepeated() => $pb.PbList<IbanSpecFields>();
   @$core.pragma('dart2js:noInline')
   static IbanSpecFields getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpecFields>(create);
-  static IbanSpecFields _defaultInstance;
+  static IbanSpecFields? _defaultInstance;
 
   @$pb.TagNumber(1)
   IbanSpecData get bankCode => $_getN(0);
@@ -537,11 +537,11 @@ class IbanSpec extends $pb.GeneratedMessage {
 
   IbanSpec._() : super();
   factory IbanSpec({
-    $core.String countryCode,
-    $core.String countryName,
-    $core.int length,
-    IbanSpecPatterns patterns,
-    IbanSpecFields fields,
+    $core.String? countryCode,
+    $core.String? countryName,
+    $core.int? length,
+    IbanSpecPatterns? patterns,
+    IbanSpecFields? fields,
   }) {
     final _result = create();
     if (countryCode != null) {
@@ -580,7 +580,7 @@ class IbanSpec extends $pb.GeneratedMessage {
   static $pb.PbList<IbanSpec> createRepeated() => $pb.PbList<IbanSpec>();
   @$core.pragma('dart2js:noInline')
   static IbanSpec getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbanSpec>(create);
-  static IbanSpec _defaultInstance;
+  static IbanSpec? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get countryCode => $_getSZ(0);
@@ -640,7 +640,7 @@ class IbansSpecs extends $pb.GeneratedMessage {
 
   IbansSpecs._() : super();
   factory IbansSpecs({
-    $core.Iterable<IbanSpec> list,
+    $core.Iterable<IbanSpec>? list,
   }) {
     final _result = create();
     if (list != null) {
@@ -667,7 +667,7 @@ class IbansSpecs extends $pb.GeneratedMessage {
   static $pb.PbList<IbansSpecs> createRepeated() => $pb.PbList<IbansSpecs>();
   @$core.pragma('dart2js:noInline')
   static IbansSpecs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IbansSpecs>(create);
-  static IbansSpecs _defaultInstance;
+  static IbansSpecs? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<IbanSpec> get list => $_getList(0);
@@ -681,7 +681,7 @@ class Banks extends $pb.GeneratedMessage {
 
   Banks._() : super();
   factory Banks({
-    $core.Iterable<Bank> list,
+    $core.Iterable<Bank>? list,
   }) {
     final _result = create();
     if (list != null) {
@@ -708,7 +708,7 @@ class Banks extends $pb.GeneratedMessage {
   static $pb.PbList<Banks> createRepeated() => $pb.PbList<Banks>();
   @$core.pragma('dart2js:noInline')
   static Banks getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Banks>(create);
-  static Banks _defaultInstance;
+  static Banks? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<Bank> get list => $_getList(0);

@@ -19,7 +19,7 @@ class ValueException extends ParseException {
 /// Thrown when a BBAN provided is considered invalid
 class InvalidBbanException extends ParseException {
   /// the invalid basic bank account number
-  String bban;
+  String bban = "The Basic Bank Account Number provided is invalid";
   InvalidBbanException(String cause, String bban) : super(cause);
 }
 
@@ -28,7 +28,7 @@ class InvalidBbanException extends ParseException {
 /// Thrown when an invalid Iban Check digit is provided
 class InvalidCheckDigitException extends ParseException {
   /// The invalid check digit
-  String check_digit;
+  String check_digit = "The check digit provided is invalid";
   InvalidCheckDigitException(String cause, String check_digit) : super(cause);
 }
 
