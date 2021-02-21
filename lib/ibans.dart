@@ -1,8 +1,6 @@
-/// Support for doing something awesome.
+/// Lib for validating and parsing ibans
 ///
-/// More dartdocs go here.
+/// Provides useful information about the bank and account associated with the iban
 library ibans_dart;
 
 export 'src/ibans.dart';
-
-// TODO: Export any libraries intended for clients of this package.

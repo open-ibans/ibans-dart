@@ -1,6 +1,5 @@
 
 import 'package:ibans/ibans.dart';
-import 'package:ibans/src/models.dart';
 import 'package:test/test.dart';
 
 void main() {
