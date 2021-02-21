@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package specs;
+
+message Bank {
+    string name = 2;
+    string code = 1;
+    string initials = 3;
+    string swift = 4;
+}
+
+message IbanSpecConstant {
+    uint32 position = 1;
+    string constant = 3;
+
+}
+
+message IbanSpecConstantPattern {
+    uint32 position = 1;
+    string pattern = 2;
+    string constant = 3;
+
+}
+
+message IbanSpecPatterns {
+    string check_digit = 1;
+    string bban = 2;
+    repeated IbanSpecConstantPattern constants = 3;
+}
+
+/* Represents a  piece of information in a Iban string ex. bank number, currency code
+ */
+message IbanSpecData {
+    uint32 position = 1; // the information start position in the string
+    uint32 length = 2; // length of the information
+}
+
+message IbanSpecFields {
+    IbanSpecData bank_code = 1;
+    IbanSpecData account_number = 2;
+    IbanSpecData branch_code = 3;
+    IbanSpecData account_type = 4;
+    IbanSpecData account_holder = 5;
+    IbanSpecData balance_account_number = 6;
+    IbanSpecData currency_code  = 7;
+    repeated IbanSpecData country_check_codes = 8;
+    repeated IbanSpecConstant constants = 9;
+}
+
+message IbanSpec {
+    string country_code = 1;
+    string country_name = 2;
+    uint32 length = 3;
+    IbanSpecPatterns patterns = 5;
+    IbanSpecFields fields = 6;
+}
+
+message IbansSpecs {
+    repeated IbanSpec list = 1;
+}
+
+
+message Banks {
+    repeated Bank list = 1;
+}
