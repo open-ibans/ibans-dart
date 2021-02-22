@@ -1,5 +1,7 @@
 # ibans
 
+[![likes](https://badges.bar/ibans/likes)](https://pub.dev/packages/ibans/score) [![likes](https://badges.bar/ibans/popularity)](https://pub.dev/packages/ibans/score) [![likes](https://badges.bar/ibans/pub%20points)](https://pub.dev/packages/ibans/score)
+
 A simple yet powerful package for validating parsing ibans
 
 # Features
