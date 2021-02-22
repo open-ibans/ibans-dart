@@ -162,6 +162,9 @@ Future<Bank> _getBank(String countryCode, String bankCode) async {
   return bank;
 }
 
+/// Loads a resource as Uint8List
+///
+/// Returns a Uint8List
 Future<Uint8List> _getBytes(String path) async {
   Uint8List resource = await rootBundle.load(path).then((value) {
     return value.buffer.asUint8List();
