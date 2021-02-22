@@ -43,23 +43,25 @@ message IbanSpecFields {
     IbanSpecData account_holder = 5;
     IbanSpecData balance_account_number = 6;
     IbanSpecData currency_code  = 7;
-    repeated IbanSpecData country_check_codes = 8;
-    repeated IbanSpecConstant constants = 9;
+    IbanSpecData owner_account_number  = 8;
+    repeated IbanSpecData country_check_digits = 9;
+    repeated IbanSpecConstant constants = 10;
 }
 
 message IbanSpec {
     string country_code = 1;
     string country_name = 2;
     uint32 length = 3;
+    repeated uint32 spaces_at = 4;
     IbanSpecPatterns patterns = 5;
     IbanSpecFields fields = 6;
 }
 
 message IbansSpecs {
-    repeated IbanSpec list = 1;
+    map<string, IbanSpec> specs = 1;
 }
 
 
 message Banks {
-    repeated Bank list = 1;
+    map<string, Bank> banks = 1;
 }

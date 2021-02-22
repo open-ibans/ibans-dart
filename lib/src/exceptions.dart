@@ -19,7 +19,7 @@ class ValueException extends ParseException {
 /// Thrown when a BBAN provided is considered invalid
 class InvalidBbanException extends ParseException {
   /// the invalid basic bank account number
-  String bban;
+  String bban = "The Basic Bank Account Number provided is invalid";
   InvalidBbanException(String cause, String bban) : super(cause);
 }
 
@@ -28,8 +28,8 @@ class InvalidBbanException extends ParseException {
 /// Thrown when an invalid Iban Check digit is provided
 class InvalidCheckDigitException extends ParseException {
   /// The invalid check digit
-  String check_digit;
-  InvalidCheckDigitException(String cause, String check_digit) : super(cause);
+  String checkDigit = "The check digit provided is invalid";
+  InvalidCheckDigitException(String cause, String checkDigit) : super(cause);
 }
 
 /// Represents an invalid IBAN
@@ -44,9 +44,10 @@ class InvalidMod97Exception extends ParseException {
 /// Thrown when a provided iban doesn't have an expected constant value
 class UnexpectedConstantValue extends ParseException {
   /// The unexpected constant
-  String value;
+  late String value;
+
   /// The position the constant was found
-  int position;
-  UnexpectedConstantValue(String cause, String value,
-      int position) : super(cause);
+  late int position;
+  UnexpectedConstantValue(String cause, String value, int position)
+      : super(cause);
 }

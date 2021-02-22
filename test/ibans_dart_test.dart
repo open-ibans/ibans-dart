@@ -1,16 +1,12 @@
-
-import 'package:ibans/ibans.dart';
 import 'package:test/test.dart';
+import 'package:ibans/ibans.dart';
 
 void main() {
   group('A group of tests', () {
-
-    setUp(() {
-    });
-
-    test('First Test', () {
-      var iban = parse('AO06005500009209313310152');
+    test('First Test', () async {
+      var iban = await parse('AO06005500009209313310152');
       expect(iban.country.code, 'AO');
+      expect(iban.bank.code, '0055');
     });
   });
 }
