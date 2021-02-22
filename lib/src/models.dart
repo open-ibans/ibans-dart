@@ -28,19 +28,19 @@ class Account {
   /// The account holder identification
   String? holder;
   /// The currency code
-  String? currency_code;
+  String? currencyCode;
   /// The balance account number
-  String? balance_account;
+  String? balanceAccount;
 
   Account(this.number, this.type,
-      this.holder, this.currency_code,
-      this.balance_account);
+      this.holder, this.currencyCode,
+      this.balanceAccount);
 }
 
 /// Represents an iban
 class Iban {
-  /// the iban format specific to that country
-  List<String> _iban_format;
+  /// the iban format specific to that country by providing the index for the spaces
+  List<int> spacesAt;
   /// The bank associated to the iban
   Bank bank;
   /// The country
@@ -48,11 +48,11 @@ class Iban {
   /// The account Data
   Account account;
   /// the check digit
-  String check_digit;
+  String checkDigit;
   /// The Basic Bank Account Number (BBAN)
-  String basic_bank_account_number;
+  String basicBankAccountNumber;
 
-  Iban(this._iban_format, this.bank,
+  Iban(this.spacesAt, this.bank,
       this.country, this.account,
-      this.check_digit, this.basic_bank_account_number);
+      this.checkDigit, this.basicBankAccountNumber);
 }
