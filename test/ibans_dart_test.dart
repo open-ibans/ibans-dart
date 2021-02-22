@@ -6,8 +6,8 @@ void main() {
   group('A group of tests', () {
 
 
-    test('First Test', () {
-      var iban = parse('AO06005500009209313310152');
+    test('First Test', () async {
+      var iban = await parse('AO06005500009209313310152');
       expect(iban.country.code, 'AO');
     });
   });
