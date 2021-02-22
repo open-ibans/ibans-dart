@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:typed_data';
 
@@ -6,8 +5,6 @@ import '../specs.pb.dart';
 import 'exceptions.dart';
 import 'models.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
-
 
 /// Returns a Iban object
 ///
@@ -28,25 +25,16 @@ Future<Iban> parse(String ibanString) async {
   validate(ibanString, spec!);
 
   var account = Account(
-    _getField(spec.fields.accountNumber, ibanString),
-    _getField(spec.fields.accountType, ibanString),
-    _getField(spec.fields.accountHolder, ibanString),
-    _getField(spec.fields.currencyCode, ibanString),
-    _getField(spec.fields.balanceAccountNumber, ibanString)
-  );
+      _getField(spec.fields.accountNumber, ibanString),
+      _getField(spec.fields.accountType, ibanString),
+      _getField(spec.fields.accountHolder, ibanString),
+      _getField(spec.fields.currencyCode, ibanString),
+      _getField(spec.fields.balanceAccountNumber, ibanString));
   var bankCode = _getField(spec.fields.bankCode, ibanString);
-  var country = Country(
-    spec.countryCode,
-    spec.countryName
-  );
+  var country = Country(spec.countryCode, spec.countryName);
   var bank = await _getBank(countryCode, bankCode);
-  var iban = Iban(
-    spec.spacesAt,
-    bank,
-    country,
-    account,
-    ibanString.substring(2, 4),
-    ibanString.substring(4));
+  var iban = Iban(spec.spacesAt, bank, country, account,
+      ibanString.substring(2, 4), ibanString.substring(4));
   return iban;
 }
 
@@ -68,26 +56,27 @@ Future<bool> isValid(String ibanString) async {
 /// [InvalidMod97Exception] if mod 97 validation result is invalid
 Future<void> validate(String iban, IbanSpec spec) async {
   var spec = await _getIbanSpec(iban.substring(0, 2));
-  if(spec == null) {
+  if (spec == null) {
     throw ValueException("This country doesn't support iban");
   }
-  if(spec.length != iban.length) {
+  if (spec.length != iban.length) {
     throw ValueException('Invalid Iban length');
   }
-  if(_hasMatch(spec.patterns.bban, iban) == false) {
+  if (_hasMatch(spec.patterns.bban, iban) == false) {
     var field = iban.substring(4);
     throw InvalidBbanException('Invalid Basic Bank Account Number', field);
   }
-  if(_hasMatch(spec.patterns.checkDigit, iban) == false) {
+  if (_hasMatch(spec.patterns.checkDigit, iban) == false) {
     var field = iban.substring(2, 2);
     throw InvalidCheckDigitException('Invalid Check Digit', field);
   }
-  for(var constant in spec.patterns.constants){
-    if(_hasMatch(constant.pattern, iban) == false) {
-      throw UnexpectedConstantValue('Invalid constant value', constant.constant, constant.position);
+  for (var constant in spec.patterns.constants) {
+    if (_hasMatch(constant.pattern, iban) == false) {
+      throw UnexpectedConstantValue(
+          'Invalid constant value', constant.constant, constant.position);
     }
   }
-  if(_calculateMod97(iban) != 1) {
+  if (_calculateMod97(iban) != 1) {
     throw InvalidMod97Exception('Invalid MOD 97 Operation Result');
   }
 }
@@ -110,11 +99,11 @@ bool _hasMatch(String pattern, String iban) {
 /// Performs a MOD 97 Operation
 ///
 /// Return an int as the result
-int _calculateMod97(String iban){
+int _calculateMod97(String iban) {
   /// send the first 4 letters to the back
   iban = iban.substring(4) + iban.substring(0, 4);
-  iban = iban.replaceAllMapped(RegExp(r'([A-Z]{1})'),
-          (Match m) => '${m[0]!.codeUnits[0] - 55}');
+  iban = iban.replaceAllMapped(
+      RegExp(r'([A-Z]{1})'), (Match m) => '${m[0]!.codeUnits[0] - 55}');
 
   var ibanInt = BigInt.parse(iban);
   var remainder = ibanInt.remainder(BigInt.from(97)).toInt();
@@ -133,7 +122,7 @@ Future<IbanSpec?> _getIbanSpec(String countryCode) async {
 
   bool hasKey = ibans.specs.containsKey(countryCode);
 
-  if(hasKey == false) {
+  if (hasKey == false) {
     throw ValueException("Iban spec for $countryCode was not found");
   }
 
@@ -152,11 +141,11 @@ Future<Bank> _getBank(String countryCode, String bankCode) async {
 
   bool hasKey = banks.banks.containsKey(bankCode);
 
-  if(hasKey == false) {
+  if (hasKey == false) {
     throw ValueException("Bank was not found");
   }
   Bank? bank = banks.banks[bankCode];
-  if(bank == null){
+  if (bank == null) {
     bank = Bank(code: bankCode);
   }
   return bank;
@@ -172,5 +161,3 @@ Future<Uint8List> _getBytes(String path) async {
 
   return resource;
 }
-
-

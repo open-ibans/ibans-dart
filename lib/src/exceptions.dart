@@ -45,8 +45,9 @@ class InvalidMod97Exception extends ParseException {
 class UnexpectedConstantValue extends ParseException {
   /// The unexpected constant
   late String value;
+
   /// The position the constant was found
   late int position;
-  UnexpectedConstantValue(String cause, String value,
-      int position) : super(cause);
+  UnexpectedConstantValue(String cause, String value, int position)
+      : super(cause);
 }
