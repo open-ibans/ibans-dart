@@ -78,13 +78,14 @@ const IbanSpecFields$json = const {
     const {'1': 'account_holder', '3': 5, '4': 1, '5': 11, '6': '.specs.IbanSpecData', '10': 'accountHolder'},
     const {'1': 'balance_account_number', '3': 6, '4': 1, '5': 11, '6': '.specs.IbanSpecData', '10': 'balanceAccountNumber'},
     const {'1': 'currency_code', '3': 7, '4': 1, '5': 11, '6': '.specs.IbanSpecData', '10': 'currencyCode'},
-    const {'1': 'country_check_codes', '3': 8, '4': 3, '5': 11, '6': '.specs.IbanSpecData', '10': 'countryCheckCodes'},
-    const {'1': 'constants', '3': 9, '4': 3, '5': 11, '6': '.specs.IbanSpecConstant', '10': 'constants'},
+    const {'1': 'owner_account_number', '3': 8, '4': 1, '5': 11, '6': '.specs.IbanSpecData', '10': 'ownerAccountNumber'},
+    const {'1': 'country_check_digits', '3': 9, '4': 3, '5': 11, '6': '.specs.IbanSpecData', '10': 'countryCheckDigits'},
+    const {'1': 'constants', '3': 10, '4': 3, '5': 11, '6': '.specs.IbanSpecConstant', '10': 'constants'},
   ],
 };
 
 /// Descriptor for `IbanSpecFields`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List ibanSpecFieldsDescriptor = $convert.base64Decode('Cg5JYmFuU3BlY0ZpZWxkcxIwCgliYW5rX2NvZGUYASABKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSCGJhbmtDb2RlEjoKDmFjY291bnRfbnVtYmVyGAIgASgLMhMuc3BlY3MuSWJhblNwZWNEYXRhUg1hY2NvdW50TnVtYmVyEjQKC2JyYW5jaF9jb2RlGAMgASgLMhMuc3BlY3MuSWJhblNwZWNEYXRhUgpicmFuY2hDb2RlEjYKDGFjY291bnRfdHlwZRgEIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVILYWNjb3VudFR5cGUSOgoOYWNjb3VudF9ob2xkZXIYBSABKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSDWFjY291bnRIb2xkZXISSQoWYmFsYW5jZV9hY2NvdW50X251bWJlchgGIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVIUYmFsYW5jZUFjY291bnROdW1iZXISOAoNY3VycmVuY3lfY29kZRgHIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVIMY3VycmVuY3lDb2RlEkMKE2NvdW50cnlfY2hlY2tfY29kZXMYCCADKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSEWNvdW50cnlDaGVja0NvZGVzEjUKCWNvbnN0YW50cxgJIAMoCzIXLnNwZWNzLkliYW5TcGVjQ29uc3RhbnRSCWNvbnN0YW50cw==');
+final $typed_data.Uint8List ibanSpecFieldsDescriptor = $convert.base64Decode('Cg5JYmFuU3BlY0ZpZWxkcxIwCgliYW5rX2NvZGUYASABKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSCGJhbmtDb2RlEjoKDmFjY291bnRfbnVtYmVyGAIgASgLMhMuc3BlY3MuSWJhblNwZWNEYXRhUg1hY2NvdW50TnVtYmVyEjQKC2JyYW5jaF9jb2RlGAMgASgLMhMuc3BlY3MuSWJhblNwZWNEYXRhUgpicmFuY2hDb2RlEjYKDGFjY291bnRfdHlwZRgEIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVILYWNjb3VudFR5cGUSOgoOYWNjb3VudF9ob2xkZXIYBSABKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSDWFjY291bnRIb2xkZXISSQoWYmFsYW5jZV9hY2NvdW50X251bWJlchgGIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVIUYmFsYW5jZUFjY291bnROdW1iZXISOAoNY3VycmVuY3lfY29kZRgHIAEoCzITLnNwZWNzLkliYW5TcGVjRGF0YVIMY3VycmVuY3lDb2RlEkUKFG93bmVyX2FjY291bnRfbnVtYmVyGAggASgLMhMuc3BlY3MuSWJhblNwZWNEYXRhUhJvd25lckFjY291bnROdW1iZXISRQoUY291bnRyeV9jaGVja19kaWdpdHMYCSADKAsyEy5zcGVjcy5JYmFuU3BlY0RhdGFSEmNvdW50cnlDaGVja0RpZ2l0cxI1Cgljb25zdGFudHMYCiADKAsyFy5zcGVjcy5JYmFuU3BlY0NvbnN0YW50Ugljb25zdGFudHM=');
 @$core.Deprecated('Use ibanSpecDescriptor instead')
 const IbanSpec$json = const {
   '1': 'IbanSpec',
@@ -92,30 +93,53 @@ const IbanSpec$json = const {
     const {'1': 'country_code', '3': 1, '4': 1, '5': 9, '10': 'countryCode'},
     const {'1': 'country_name', '3': 2, '4': 1, '5': 9, '10': 'countryName'},
     const {'1': 'length', '3': 3, '4': 1, '5': 13, '10': 'length'},
+    const {'1': 'spaces_at', '3': 4, '4': 3, '5': 13, '10': 'spacesAt'},
     const {'1': 'patterns', '3': 5, '4': 1, '5': 11, '6': '.specs.IbanSpecPatterns', '10': 'patterns'},
     const {'1': 'fields', '3': 6, '4': 1, '5': 11, '6': '.specs.IbanSpecFields', '10': 'fields'},
   ],
 };
 
 /// Descriptor for `IbanSpec`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List ibanSpecDescriptor = $convert.base64Decode('CghJYmFuU3BlYxIhCgxjb3VudHJ5X2NvZGUYASABKAlSC2NvdW50cnlDb2RlEiEKDGNvdW50cnlfbmFtZRgCIAEoCVILY291bnRyeU5hbWUSFgoGbGVuZ3RoGAMgASgNUgZsZW5ndGgSMwoIcGF0dGVybnMYBSABKAsyFy5zcGVjcy5JYmFuU3BlY1BhdHRlcm5zUghwYXR0ZXJucxItCgZmaWVsZHMYBiABKAsyFS5zcGVjcy5JYmFuU3BlY0ZpZWxkc1IGZmllbGRz');
+final $typed_data.Uint8List ibanSpecDescriptor = $convert.base64Decode('CghJYmFuU3BlYxIhCgxjb3VudHJ5X2NvZGUYASABKAlSC2NvdW50cnlDb2RlEiEKDGNvdW50cnlfbmFtZRgCIAEoCVILY291bnRyeU5hbWUSFgoGbGVuZ3RoGAMgASgNUgZsZW5ndGgSGwoJc3BhY2VzX2F0GAQgAygNUghzcGFjZXNBdBIzCghwYXR0ZXJucxgFIAEoCzIXLnNwZWNzLkliYW5TcGVjUGF0dGVybnNSCHBhdHRlcm5zEi0KBmZpZWxkcxgGIAEoCzIVLnNwZWNzLkliYW5TcGVjRmllbGRzUgZmaWVsZHM=');
 @$core.Deprecated('Use ibansSpecsDescriptor instead')
 const IbansSpecs$json = const {
   '1': 'IbansSpecs',
   '2': const [
-    const {'1': 'list', '3': 1, '4': 3, '5': 11, '6': '.specs.IbanSpec', '10': 'list'},
+    const {'1': 'specs', '3': 1, '4': 3, '5': 11, '6': '.specs.IbansSpecs.SpecsEntry', '10': 'specs'},
   ],
+  '3': const [IbansSpecs_SpecsEntry$json],
+};
+
+@$core.Deprecated('Use ibansSpecsDescriptor instead')
+const IbansSpecs_SpecsEntry$json = const {
+  '1': 'SpecsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.specs.IbanSpec', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `IbansSpecs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List ibansSpecsDescriptor = $convert.base64Decode('CgpJYmFuc1NwZWNzEiMKBGxpc3QYASADKAsyDy5zcGVjcy5JYmFuU3BlY1IEbGlzdA==');
+final $typed_data.Uint8List ibansSpecsDescriptor = $convert.base64Decode('CgpJYmFuc1NwZWNzEjIKBXNwZWNzGAEgAygLMhwuc3BlY3MuSWJhbnNTcGVjcy5TcGVjc0VudHJ5UgVzcGVjcxpJCgpTcGVjc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiUKBXZhbHVlGAIgASgLMg8uc3BlY3MuSWJhblNwZWNSBXZhbHVlOgI4AQ==');
 @$core.Deprecated('Use banksDescriptor instead')
 const Banks$json = const {
   '1': 'Banks',
   '2': const [
-    const {'1': 'list', '3': 1, '4': 3, '5': 11, '6': '.specs.Bank', '10': 'list'},
+    const {'1': 'banks', '3': 1, '4': 3, '5': 11, '6': '.specs.Banks.BanksEntry', '10': 'banks'},
   ],
+  '3': const [Banks_BanksEntry$json],
+};
+
+@$core.Deprecated('Use banksDescriptor instead')
+const Banks_BanksEntry$json = const {
+  '1': 'BanksEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.specs.Bank', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `Banks`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List banksDescriptor = $convert.base64Decode('CgVCYW5rcxIfCgRsaXN0GAEgAygLMgsuc3BlY3MuQmFua1IEbGlzdA==');
+final $typed_data.Uint8List banksDescriptor = $convert.base64Decode('CgVCYW5rcxItCgViYW5rcxgBIAMoCzIXLnNwZWNzLkJhbmtzLkJhbmtzRW50cnlSBWJhbmtzGkUKCkJhbmtzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSIQoFdmFsdWUYAiABKAsyCy5zcGVjcy5CYW5rUgV2YWx1ZToCOAE=');

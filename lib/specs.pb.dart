@@ -373,8 +373,9 @@ class IbanSpecFields extends $pb.GeneratedMessage {
     ..aOM<IbanSpecData>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accountHolder', subBuilder: IbanSpecData.create)
     ..aOM<IbanSpecData>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'balanceAccountNumber', subBuilder: IbanSpecData.create)
     ..aOM<IbanSpecData>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currencyCode', subBuilder: IbanSpecData.create)
-    ..pc<IbanSpecData>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryCheckCodes', $pb.PbFieldType.PM, subBuilder: IbanSpecData.create)
-    ..pc<IbanSpecConstant>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'constants', $pb.PbFieldType.PM, subBuilder: IbanSpecConstant.create)
+    ..aOM<IbanSpecData>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerAccountNumber', subBuilder: IbanSpecData.create)
+    ..pc<IbanSpecData>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryCheckDigits', $pb.PbFieldType.PM, subBuilder: IbanSpecData.create)
+    ..pc<IbanSpecConstant>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'constants', $pb.PbFieldType.PM, subBuilder: IbanSpecConstant.create)
     ..hasRequiredFields = false
   ;
 
@@ -387,7 +388,8 @@ class IbanSpecFields extends $pb.GeneratedMessage {
     IbanSpecData? accountHolder,
     IbanSpecData? balanceAccountNumber,
     IbanSpecData? currencyCode,
-    $core.Iterable<IbanSpecData>? countryCheckCodes,
+    IbanSpecData? ownerAccountNumber,
+    $core.Iterable<IbanSpecData>? countryCheckDigits,
     $core.Iterable<IbanSpecConstant>? constants,
   }) {
     final _result = create();
@@ -412,8 +414,11 @@ class IbanSpecFields extends $pb.GeneratedMessage {
     if (currencyCode != null) {
       _result.currencyCode = currencyCode;
     }
-    if (countryCheckCodes != null) {
-      _result.countryCheckCodes.addAll(countryCheckCodes);
+    if (ownerAccountNumber != null) {
+      _result.ownerAccountNumber = ownerAccountNumber;
+    }
+    if (countryCheckDigits != null) {
+      _result.countryCheckDigits.addAll(countryCheckDigits);
     }
     if (constants != null) {
       _result.constants.addAll(constants);
@@ -519,10 +524,21 @@ class IbanSpecFields extends $pb.GeneratedMessage {
   IbanSpecData ensureCurrencyCode() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  $core.List<IbanSpecData> get countryCheckCodes => $_getList(7);
+  IbanSpecData get ownerAccountNumber => $_getN(7);
+  @$pb.TagNumber(8)
+  set ownerAccountNumber(IbanSpecData v) { setField(8, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasOwnerAccountNumber() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearOwnerAccountNumber() => clearField(8);
+  @$pb.TagNumber(8)
+  IbanSpecData ensureOwnerAccountNumber() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $core.List<IbanSpecConstant> get constants => $_getList(8);
+  $core.List<IbanSpecData> get countryCheckDigits => $_getList(8);
+
+  @$pb.TagNumber(10)
+  $core.List<IbanSpecConstant> get constants => $_getList(9);
 }
 
 class IbanSpec extends $pb.GeneratedMessage {
@@ -530,6 +546,7 @@ class IbanSpec extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryCode')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryName')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'length', $pb.PbFieldType.OU3)
+    ..p<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'spacesAt', $pb.PbFieldType.PU3)
     ..aOM<IbanSpecPatterns>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'patterns', subBuilder: IbanSpecPatterns.create)
     ..aOM<IbanSpecFields>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', subBuilder: IbanSpecFields.create)
     ..hasRequiredFields = false
@@ -540,6 +557,7 @@ class IbanSpec extends $pb.GeneratedMessage {
     $core.String? countryCode,
     $core.String? countryName,
     $core.int? length,
+    $core.Iterable<$core.int>? spacesAt,
     IbanSpecPatterns? patterns,
     IbanSpecFields? fields,
   }) {
@@ -552,6 +570,9 @@ class IbanSpec extends $pb.GeneratedMessage {
     }
     if (length != null) {
       _result.length = length;
+    }
+    if (spacesAt != null) {
+      _result.spacesAt.addAll(spacesAt);
     }
     if (patterns != null) {
       _result.patterns = patterns;
@@ -609,42 +630,45 @@ class IbanSpec extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearLength() => clearField(3);
 
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get spacesAt => $_getList(3);
+
   @$pb.TagNumber(5)
-  IbanSpecPatterns get patterns => $_getN(3);
+  IbanSpecPatterns get patterns => $_getN(4);
   @$pb.TagNumber(5)
   set patterns(IbanSpecPatterns v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasPatterns() => $_has(3);
+  $core.bool hasPatterns() => $_has(4);
   @$pb.TagNumber(5)
   void clearPatterns() => clearField(5);
   @$pb.TagNumber(5)
-  IbanSpecPatterns ensurePatterns() => $_ensure(3);
+  IbanSpecPatterns ensurePatterns() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  IbanSpecFields get fields => $_getN(4);
+  IbanSpecFields get fields => $_getN(5);
   @$pb.TagNumber(6)
   set fields(IbanSpecFields v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasFields() => $_has(4);
+  $core.bool hasFields() => $_has(5);
   @$pb.TagNumber(6)
   void clearFields() => clearField(6);
   @$pb.TagNumber(6)
-  IbanSpecFields ensureFields() => $_ensure(4);
+  IbanSpecFields ensureFields() => $_ensure(5);
 }
 
 class IbansSpecs extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IbansSpecs', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'specs'), createEmptyInstance: create)
-    ..pc<IbanSpec>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'list', $pb.PbFieldType.PM, subBuilder: IbanSpec.create)
+    ..m<$core.String, IbanSpec>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'specs', entryClassName: 'IbansSpecs.SpecsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: IbanSpec.create, packageName: const $pb.PackageName('specs'))
     ..hasRequiredFields = false
   ;
 
   IbansSpecs._() : super();
   factory IbansSpecs({
-    $core.Iterable<IbanSpec>? list,
+    $core.Map<$core.String, IbanSpec>? specs,
   }) {
     final _result = create();
-    if (list != null) {
-      _result.list.addAll(list);
+    if (specs != null) {
+      _result.specs.addAll(specs);
     }
     return _result;
   }
@@ -670,22 +694,22 @@ class IbansSpecs extends $pb.GeneratedMessage {
   static IbansSpecs? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<IbanSpec> get list => $_getList(0);
+  $core.Map<$core.String, IbanSpec> get specs => $_getMap(0);
 }
 
 class Banks extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Banks', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'specs'), createEmptyInstance: create)
-    ..pc<Bank>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'list', $pb.PbFieldType.PM, subBuilder: Bank.create)
+    ..m<$core.String, Bank>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'banks', entryClassName: 'Banks.BanksEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: Bank.create, packageName: const $pb.PackageName('specs'))
     ..hasRequiredFields = false
   ;
 
   Banks._() : super();
   factory Banks({
-    $core.Iterable<Bank>? list,
+    $core.Map<$core.String, Bank>? banks,
   }) {
     final _result = create();
-    if (list != null) {
-      _result.list.addAll(list);
+    if (banks != null) {
+      _result.banks.addAll(banks);
     }
     return _result;
   }
@@ -711,6 +735,6 @@ class Banks extends $pb.GeneratedMessage {
   static Banks? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Bank> get list => $_getList(0);
+  $core.Map<$core.String, Bank> get banks => $_getMap(0);
 }
 
